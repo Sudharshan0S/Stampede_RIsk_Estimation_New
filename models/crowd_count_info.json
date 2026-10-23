@@ -1,0 +1,74 @@
+{
+  "count_info": {
+    "variant": "D_point_density_hires",
+    "trained_with_negatives": false,
+    "post": {
+      "conf_accept": 0.3,
+      "uncertain_ratio": 0.5,
+      "dup_radius": 4.0
+    },
+    "refinement": true
+  },
+  "test": {
+    "MAE": 41.295180722891565,
+    "RMSE": 84.75681015393323,
+    "NAE": 0.1593605562485393,
+    "precision": 0.6617557833818198,
+    "recall": 0.7210699846588068,
+    "F1": 0.690140787941965,
+    "loc_err_px": 2.9346195006344202
+  },
+  "selection": {
+    "selected": "D_point_density_hires",
+    "baseline": "D_point_density_hires",
+    "enhanced_selected": false,
+    "val_table": [
+      {
+        "variant": "D_point_density_hires",
+        "kind": "point",
+        "conf_accept": 0.3,
+        "dup_radius": 4.0,
+        "val_F1": 0.6570462011145793,
+        "val_precision": 0.657443746729461,
+        "val_recall": 0.6566491359879789,
+        "val_MAE": 45.29,
+        "val_bias": -0.37,
+        "refine_enabled": true,
+        "val_F1_refined": 0.6818664501218064,
+        "refine_policy": "replace_if_more",
+        "refine_scale": 2.0,
+        "refine_rel_gap": 0.45,
+        "val_F1_final": 0.6818664501218064,
+        "heldout_neg_crops": 0.0,
+        "heldout_neg_FP_per_crop": NaN
+      },
+      {
+        "variant": "D_point_density_hires__NEG",
+        "kind": "point",
+        "conf_accept": 0.2,
+        "dup_radius": 4.0,
+        "val_F1": 0.6519625355306691,
+        "val_precision": 0.6215055674010898,
+        "val_recall": 0.6855584228922353,
+        "val_MAE": 52.15,
+        "val_bias": 31.55,
+        "refine_enabled": true,
+        "val_F1_refined": 0.6697088288179387,
+        "refine_policy": "replace_if_more",
+        "refine_scale": 1.5,
+        "refine_rel_gap": 0.25,
+        "val_F1_final": 0.6697088288179387,
+        "heldout_neg_crops": 0.0,
+        "heldout_neg_FP_per_crop": NaN
+      }
+    ]
+  },
+  "negatives": {
+    "root": "C:\\main project\\stampede-risk-estimation\\notebooks2\\deliverable\\outputs\\hard_negative_mining\\shanghai_negative_sampling",
+    "n_train": 132,
+    "n_heldout": 0,
+    "fraction": 0.15,
+    "verify_margin": 8
+  },
+  "seed": 42
+}

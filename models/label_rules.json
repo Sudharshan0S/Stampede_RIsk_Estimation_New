@@ -1,0 +1,13 @@
+{
+  "pct": 90.0,
+  "coherent_pct": 50.0,
+  "p95_speed": 2.575270962715149,
+  "accel": 0.0373487204313278,
+  "counter": 0.2937794912606478,
+  "scatter": 0.018966017814592635,
+  "compress": 0.051828947477042676,
+  "dirinstab": 0.19509623170930818,
+  "coherence_min": 0.8025206387042999,
+  "ratio": 1.1818374514357113,
+  "note": "percentile thresholds fitted on training-scene windows only (derived labels, not official)"
+}

@@ -1,0 +1,36 @@
+{
+  "work_width": 640,
+  "fps": 25.0,
+  "frame_step": 1,
+  "window_len": 20,
+  "hop": 5,
+  "multiscale": [
+    5,
+    10
+  ],
+  "min_flow": 0.02,
+  "n_dir_bins": 16,
+  "block": 8,
+  "smooth_sigma": 1.5,
+  "min_region_pixels": 200,
+  "compensate_ego": true,
+  "region_mode": "auto",
+  "density_region_thr": 0.02,
+  "region_dilate": 5,
+  "track_seeds": 600,
+  "neigh_k": 5,
+  "neigh_radius_frac": 0.06,
+  "refs": {
+    "speed_ref": 0.9390924274921417,
+    "density_ref": 4.340277777777778,
+    "scat_ref": 0.0039310432944981155,
+    "conv_ref": 0.021801169030368328,
+    "counter_ref": 0.05,
+    "dirchange_ref": 0.2
+  },
+  "regime_edges": [
+    3.385416666666667,
+    5.121527777777779,
+    8.81076388888889
+  ]
+}
