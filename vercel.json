@@ -1,28 +1,20 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "services": {
-    "crowdvision-backend": {
-      "root": "backend",
-      "framework": "flask",
-      "buildCommand": "pip install --upgrade pip && pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu && pip install -r requirements.txt"
-    },
-    "frontend": {
-      "root": "frontend",
-      "framework": "vite"
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/dist",
+  "functions": {
+    "backend/api/**/*.py": {
+      "excludeFiles": "{**/tests/**,**/__tests__/**,**/*.test.py,**/fixtures/**,**/testdata/**,**/notebooks/**}"
     }
   },
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": {
-        "service": "crowdvision-backend"
-      }
+      "destination": "/backend/api/index.py"
     },
     {
       "source": "/(.*)",
-      "destination": {
-        "service": "frontend"
-      }
+      "destination": "/index.html"
     }
   ]
 }
