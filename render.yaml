@@ -1,0 +1,33 @@
+# Render Blueprint for the BACKEND (Flask + PyTorch). The frontend is deployed separately (Vercel, see README).
+# Not testable offline: review the plan/disk sizes in the Render dashboard before applying.
+services:
+  - type: web
+    name: crowdvision-backend
+    runtime: python
+    rootDir: backend
+    plan: standard                       # PyTorch + the models need roughly 2 GB RAM or more; a 512 MB plan will be killed (out of memory)
+    buildCommand: >-
+      pip install --upgrade pip &&
+      pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu &&
+      pip install -r requirements.txt
+    startCommand: gunicorn -c gunicorn.conf.py app:app
+    healthCheckPath: /health
+    disk:
+      name: crowdvision-data
+      mountPath: /var/data               # persistent: holds the trained models and the outputs/ result files
+      sizeGB: 10
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: CROWDRISK_MODELS_DIR
+        value: /var/data/models          # upload crowd_count_model.pth, flow_selection.json, abnormal_motion.json, risk_model.pkl here
+      - key: CROWDRISK_OUTPUT_DIR
+        value: /var/data/outputs
+      - key: CROWDRISK_DEVICE
+        value: cpu
+      - key: WEB_THREADS
+        value: "8"
+      - key: GUNICORN_TIMEOUT
+        value: "900"
+      - key: CORS_ORIGINS
+        sync: false                      # you are asked for it: e.g. https://your-app.vercel.app

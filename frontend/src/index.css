@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+html {
+  -webkit-text-size-adjust: 100%; /* iOS: don't re-scale text when rotating to landscape */
+  text-size-adjust: 100%;
+}
+
+/* Full-height shell that tracks the *visible* viewport on mobile browsers (100vh is taller than the screen while the address bar is shown) */
+.app-shell {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* iPhone notch / rounded corners in landscape */
+body {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+.safe-bottom {
+  padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+}
+
+button, a, select, input, summary {
+  touch-action: manipulation; /* no double-tap-zoom delay on buttons */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* iOS Safari zooms the whole page when a focused field has a font-size below 16px */
+@media (max-width: 767px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+body {
+  @apply bg-base-950 text-slate-200 font-body antialiased;
+  background-image: radial-gradient(circle at 15% -10%, rgba(124,92,255,0.14), transparent 40%),
+    radial-gradient(circle at 85% 0%, rgba(62,230,222,0.08), transparent 35%);
+  background-attachment: fixed;
+}
+/* background-attachment: fixed is ignored/janky on iOS and many Android browsers */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #333c5c transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #2a3150;
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #3b4570;
+}
+
+.font-display {
+  letter-spacing: -0.01em;
+}
+
+.glass-panel {
+  @apply bg-base-850/80 border border-white/[0.06] backdrop-blur-sm;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes dash-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+.animate-dash-pulse {
+  animation: dash-pulse 1.8s ease-in-out infinite;
+}
+
+/* Media sizing: vh fallback first, dvh (visible viewport, accounts for mobile browser bars) overrides where supported */
+.media-max {
+  max-height: 75vh;
+  max-height: 75dvh;
+}
+.modal-media-max {
+  max-height: 88vh;
+  max-height: 88dvh;
+}
+.preview-max {
+  max-height: min(360px, 50vh);
+  max-height: min(360px, 50dvh);
+}
